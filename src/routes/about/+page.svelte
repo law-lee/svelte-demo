@@ -1,7 +1,2 @@
-<nav>
-	<a href="/">Home</a>
-	<a href="/about">About</a>
-</nav>
-
 <h1>about</h1>
 <p>this is the about page.</p>
