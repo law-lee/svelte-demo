@@ -8,6 +8,7 @@
     <a href="/about">About</a>
     <a href="/a/deeply/nested/route">a deeply nested route</a>
     <a href="/todos">Todo Lists</a>
+    <a href="/roll">Roll Dice</a>
 </nav>
 
 <!--  The {@render children()} tag is where the page content will be rendered -->
