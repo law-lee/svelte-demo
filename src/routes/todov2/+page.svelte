@@ -16,13 +16,12 @@
 				const input = e.currentTarget;
 				const description = input.value;
 
-				
-                // You can also add handlers that mutate data, such as POST. 
-                // In most cases, you should use form actions instead — you’ll end up writing less code, 
-                // and it’ll work without JavaScript, making it more resilient.
-                // Inside the keydown event handler of the ‘add a todo’ <input>, let’s post some data to the server:
-                // Here, we’re posting some JSON to the /todo API route — 
-                // using a userid from the user’s cookies — and receiving the id of the newly created todo in response.
+				// You can also add handlers that mutate data, such as POST.
+				// In most cases, you should use form actions instead — you’ll end up writing less code,
+				// and it’ll work without JavaScript, making it more resilient.
+				// Inside the keydown event handler of the ‘add a todo’ <input>, let’s post some data to the server:
+				// Here, we’re posting some JSON to the /todo API route —
+				// using a userid from the user’s cookies — and receiving the id of the newly created todo in response.
 				const response = await fetch('/todov2', {
 					method: 'POST',
 					body: JSON.stringify({ description }),
@@ -58,6 +57,13 @@
 							const done = e.currentTarget.checked;
 
 							// TODO handle change
+							await fetch(`/todov2/${todo.id}`, {
+								method: 'PUT',
+								body: JSON.stringify({ done }),
+								headers: {
+									'Content-Type': 'application/json'
+								}
+							});
 						}}
 					/>
 					<span>{todo.description}</span>
@@ -65,6 +71,11 @@
 						aria-label="Mark as complete"
 						onclick={async (e) => {
 							// TODO handle delete
+							await fetch(`/todov2/${todo.id}`, { method: 'DELETE' });
+
+							const todos = data.todos.filter((t) => t.id !== todo.id);
+
+							data = { ...data, todos };
 						}}
 					></button>
 				</label>
