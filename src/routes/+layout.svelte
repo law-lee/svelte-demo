@@ -25,18 +25,18 @@ form — the data returned from a form action
 	<a href="/todos" aria-current={page.url.pathname === '/todos'}>Todo Lists</a>
 	<a href="/roll" aria-current={page.url.pathname === '/roll'}>Roll Dice</a>
 	<a href="/todov2" aria-current={page.url.pathname === '/todov2'}>Todo v2</a>
+	<!--
+    The navigating object represents the current navigation. 
+    When a navigation starts — because of a link click, or a back/forward navigation, or a programmatic goto — 
+    the value of navigating will become an object with the following properties:
+
+    from and to — objects with params, route and url properties
+    type — the type of navigation, e.g. link, popstate or goto
+    -->
+	{#if navigating.to}
+		navigating to {navigating.to.url.pathname}
+	{/if}
 </nav>
 
-<!--
-The navigating object represents the current navigation. 
-When a navigation starts — because of a link click, or a back/forward navigation, or a programmatic goto — 
-the value of navigating will become an object with the following properties:
-
-from and to — objects with params, route and url properties
-type — the type of navigation, e.g. link, popstate or goto
--->
-{#if navigating.to}
-	navigating to {navigating.to.url.pathname}
-{/if}
 <!--  The {@render children()} tag is where the page content will be rendered -->
 {@render children()}
