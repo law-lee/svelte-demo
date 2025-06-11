@@ -25,6 +25,9 @@ form — the data returned from a form action
 	<a href="/todos" aria-current={page.url.pathname === '/todos'}>Todo Lists</a>
 	<a href="/roll" aria-current={page.url.pathname === '/roll'}>Roll Dice</a>
 	<a href="/todov2" aria-current={page.url.pathname === '/todov2'}>Todo v2</a>
+
+	<a href="/expected"  aria-current={page.url.pathname === '/expected'}>Expected error page</a>	
+	<a href="/unexpected"  aria-current={page.url.pathname === '/unexpected'}>Unxpected error page</a>
 	<!--
     The navigating object represents the current navigation. 
     When a navigation starts — because of a link click, or a back/forward navigation, or a programmatic goto — 
