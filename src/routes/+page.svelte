@@ -13,3 +13,7 @@
 
 <h2>Advanced SvelteKit/Hooks/The RequestEvent object</h2>
 <h3>{data.message}</h3>
+
+
+<h2>Advanced SvelteKit/Hooks/handleFetch</h2>
+<h3>{data.message}</h3>

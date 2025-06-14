@@ -11,11 +11,20 @@ export async function handle({ event, resolve }) {
         return new Response('pong');
     }
     event.locals.answer = 42;
-    
+
     return await resolve(event, {
         transformPageChunk: ({ html }) => html.replace(
             '<body',
             '<body style="color: hotpink'
         )
     });
+}
+
+export async function handleFetch({ event, request, fetch }) {
+    const url = new URL(request.url);
+    if (url.pathname === '/b') {
+        return await fetch('/c');
+    }
+
+    return await fetch(request);
 }
