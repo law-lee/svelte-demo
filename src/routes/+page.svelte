@@ -1,6 +1,6 @@
 <script>
 	let { data } = $props();
-    import { message } from '$lib/message.js';
+	import { message } from '$lib/message.js';
 </script>
 
 <h1>Hello {data.visited ? 'friend' : 'stranger'}!</h1>
@@ -10,3 +10,6 @@
 <p>{message}</p>
 
 <a href="/ping">ping</a>
+
+<h2>Advanced SvelteKit/Hooks/The RequestEvent object</h2>
+<h3>{data.message}</h3>

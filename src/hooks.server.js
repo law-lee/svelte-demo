@@ -10,6 +10,7 @@ export async function handle({ event, resolve }) {
     if (event.url.pathname === '/ping') {
         return new Response('pong');
     }
+    event.locals.answer = 42;
     
     return await resolve(event, {
         transformPageChunk: ({ html }) => html.replace(
