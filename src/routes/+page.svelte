@@ -8,3 +8,5 @@
 <p>this is the home page.</p>
 
 <p>{message}</p>
+
+<a href="/ping">ping</a>
