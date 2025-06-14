@@ -11,7 +11,7 @@ export function load({ setHeaders }) {
 
 */
 
-// export function load({ cookies}) {
+// export function load({ cookies }) {
 //     const visited = cookies.get('visited');
 
 //     cookies.set('visited', 'true', { path: '/' });
@@ -50,10 +50,15 @@ export function load({ setHeaders }) {
 // it can make relative requests on the server (ordinarily, fetch requires a URL with an origin when used in a server context)
 // internal requests (e.g. for +server.js routes) go directly to the handler function when running on the server, without the overhead of an HTTP call
 // Its behaviour can be modified with the handleFetch hook, which by default looks like this:
-export async function load({ fetch }) {
+export async function load({ fetch, cookies }) {
+    const visited = cookies.get('visited');
+
+    cookies.set('visited', 'true', { path: '/' });
+
     const response = await fetch('/b');
 
     return {
+        visited: visited === 'true',
         message: await response.text()
     };
 }
