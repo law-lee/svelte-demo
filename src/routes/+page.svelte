@@ -17,3 +17,7 @@
 
 <h2>Advanced SvelteKit/Hooks/handleFetch</h2>
 <h3>{data.message}</h3>
+
+
+<h2>Advanced SvelteKit/Page options/ssr</h2>
+<h3>{window.innerWidth}x{window.innerHeight}</h3>

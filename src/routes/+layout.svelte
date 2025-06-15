@@ -31,6 +31,7 @@ form — the data returned from a form action
 
 		<a href="/the-good-place" aria-current={page.url.pathname === '/the-good-place'}>the good place</a>
 	<a href="/the-bad-place" aria-current={page.url.pathname === '/the-bad-place'}>the bad place</a>
+	<a href="/csr" aria-current={page.url.pathname === '/csr'}>csr</a>
 	<!--
     The navigating object represents the current navigation. 
     When a navigation starts — because of a link click, or a back/forward navigation, or a programmatic goto — 
