@@ -39,6 +39,8 @@ form — the data returned from a form action
 			clearInterval(interval);
 		};
 	});
+
+	const colors = ['ff3e00', '676779', '42b4ff', 'invalid'];
 </script>
 
 <!--
@@ -78,7 +80,8 @@ data-sveltekit-reload attribute on an individual link, or any element that conta
 	<a href="/en">english</a>
 	<a href="/de">german</a>
 	<a href="/fr">french</a>
-	<a href="/rest/parameter" aria-current={page.url.pathname === '/rest/parameter'}>rest parameter</a>
+	<a href="/rest/parameter" aria-current={page.url.pathname === '/rest/parameter'}>rest parameter</a
+	>
 	<!--
     The navigating object represents the current navigation. 
     When a navigation starts — because of a link click, or a back/forward navigation, or a programmatic goto — 
@@ -92,6 +95,11 @@ data-sveltekit-reload attribute on an individual link, or any element that conta
 	{/if}
 </nav>
 
+<nav>
+	{#each colors as color}
+		<a href="/colors/{color}" style="--color: #{color}">#{color}</a>
+	{/each}
+</nav>
 <!--  The {@render children()} tag is where the page content will be rendered -->
 {@render children()}
 
@@ -137,5 +145,18 @@ You can manually check for new versions, regardless of pollInterval, by calling 
 		background: var(--bg-2);
 		padding: 0.5rem 0.5rem 0.5rem 1rem;
 		border-radius: 4px;
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	a::before {
+		content: '';
+		width: 2em;
+		height: 2em;
+		background: var(--color);
 	}
 </style>
