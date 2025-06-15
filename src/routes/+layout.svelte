@@ -12,10 +12,43 @@ form — the data returned from a form action
 -->
 <script>
 	import { page, navigating, updated } from '$app/state';
+	import { onMount } from 'svelte';
 	let { children } = $props();
+	let seconds = $state(0);
+	//
+	let previous = $state();
+	let start = $state();
+	let end = $state();
+
+	$effect(() => {
+		if (navigating.to) {
+			start = Date.now();
+			end = null;
+			previous = navigating;
+		} else {
+			end = Date.now();
+		}
+	});
+
+	onMount(() => {
+		const interval = setInterval(() => {
+			seconds += 1;
+		}, 1000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	});
 </script>
 
-<nav>
+<!--
+Ordinarily, SvelteKit will navigate between pages without refreshing the page. 
+In this exercise, if we navigate between / and /about, the timer keeps on ticking.
+
+In rare cases, you might want to disable this behaviour. You can do so by adding the 
+data-sveltekit-reload attribute on an individual link, or any element that contains links:
+-->
+<nav data-sveltekit-reload>
 	<a href="/" aria-current={page.url.pathname === '/'}>Home</a>
 	<a href="/blog" aria-current={page.url.pathname === '/blog'}>Blog</a>
 	<a href="/about" aria-current={page.url.pathname === '/about'}>About</a>
@@ -26,10 +59,11 @@ form — the data returned from a form action
 	<a href="/roll" aria-current={page.url.pathname === '/roll'}>Roll Dice</a>
 	<a href="/todov2" aria-current={page.url.pathname === '/todov2'}>Todo v2</a>
 
-	<a href="/expected"  aria-current={page.url.pathname === '/expected'}>Expected error page</a>	
-	<a href="/unexpected"  aria-current={page.url.pathname === '/unexpected'}>Unxpected error page</a>
+	<a href="/expected" aria-current={page.url.pathname === '/expected'}>Expected error page</a>
+	<a href="/unexpected" aria-current={page.url.pathname === '/unexpected'}>Unxpected error page</a>
 
-		<a href="/the-good-place" aria-current={page.url.pathname === '/the-good-place'}>the good place</a>
+	<a href="/the-good-place" aria-current={page.url.pathname === '/the-good-place'}>the good place</a
+	>
 	<a href="/the-bad-place" aria-current={page.url.pathname === '/the-bad-place'}>the bad place</a>
 	<a href="/csr" aria-current={page.url.pathname === '/csr'}>csr</a>
 	<a href="/prerender" aria-current={page.url.pathname === '/prerender'}>prerender</a>
@@ -56,6 +90,14 @@ form — the data returned from a form action
 <!--  The {@render children()} tag is where the page content will be rendered -->
 {@render children()}
 
+{#if previous && end}
+	<p>
+		navigated from {previous.from.url.pathname} to {previous.to.url.pathname} in
+		<strong>{end - start}ms</strong>
+	</p>
+{/if}
+
+<p>the page has been open for {seconds} seconds</p>
 <!--
 Version changes only happen in production, not during development. 
 For that reason, updated.current will always be false in this tutorial.
