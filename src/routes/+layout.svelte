@@ -78,6 +78,7 @@ data-sveltekit-reload attribute on an individual link, or any element that conta
 	<a href="/en">english</a>
 	<a href="/de">german</a>
 	<a href="/fr">french</a>
+	<a href="/rest/parameter" aria-current={page.url.pathname === '/rest/parameter'}>rest parameter</a>
 	<!--
     The navigating object represents the current navigation. 
     When a navigation starts — because of a link click, or a back/forward navigation, or a programmatic goto — 
