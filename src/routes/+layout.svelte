@@ -74,6 +74,10 @@ data-sveltekit-reload attribute on an individual link, or any element that conta
 	<a href="/ignore/">/ignore/</a>
 	<a href="/never">/never</a>
 	<a href="/never/">/never/</a>
+
+	<a href="/en">english</a>
+	<a href="/de">german</a>
+	<a href="/fr">french</a>
 	<!--
     The navigating object represents the current navigation. 
     When a navigation starts — because of a link click, or a back/forward navigation, or a programmatic goto — 

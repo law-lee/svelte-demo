@@ -70,6 +70,6 @@ export async function load({ fetch, cookies }) {
 //That said, some components can’t be rendered on the server, perhaps because they expect to be able to access browser globals 
 // like window immediately. If you can, you should change those components so that they can render on the server, but if you 
 // can’t then you can disable SSR:
-// export const ssr = false;
+export const ssr = false;
 
 // Setting ssr to false inside your root +layout.server.js effectively turns your entire app into a single-page app (SPA).
