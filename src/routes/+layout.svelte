@@ -100,8 +100,21 @@ data-sveltekit-reload attribute on an individual link, or any element that conta
 	{#each colors as color}
 		<a href="/colors/{color}" style="--color: #{color}">#{color}</a>
 	{/each}
+
 </nav>
 
+<nav
+	class={[page.data.color && 'has-color']}
+	style:background={page.data.color ?? 'var(--bg-2)'}
+>
+	<a href="/red">red</a>
+	<a href="/green">green</a>
+	<a href="/blue">blue</a>
+
+	{#if page.data.component}
+		<page.data.component />
+	{/if}
+</nav>
 <!--  The {@render children()} tag is where the page content will be rendered -->
 {@render children()}
 
@@ -129,6 +142,10 @@ You can manually check for new versions, regardless of pollInterval, by calling 
 {/if}
 
 <style>
+	nav.has-color,
+	nav.has-color a {
+		color: white;
+	}
 	.toast {
 		position: fixed;
 		left: 0;
