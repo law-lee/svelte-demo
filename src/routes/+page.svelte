@@ -21,3 +21,6 @@
 
 <h2>Advanced SvelteKit/Page options/ssr</h2>
 <h3>{window.innerWidth}x{window.innerHeight}</h3>
+
+<p>if a = 1 and b = a + 1, what is a + b?</p>
+<a href="/sum">show answer</a>
